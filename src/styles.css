@@ -1,0 +1,11 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.trending-section {
+  width: 500px;
+}
+
+.override {
+  height: 100px !important;
+}
