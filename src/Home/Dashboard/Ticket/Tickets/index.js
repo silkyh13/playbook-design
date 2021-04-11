@@ -13,6 +13,7 @@ import {
   Background,
   Avatar,
   Badge,
+  Pill,
   TextInput,
 } from "playbook-ui";
 function getRandomInt(min, max) {
@@ -66,19 +67,33 @@ const Tickets = ({ item }) => {
         // marginTop="md"
         // responsive="none"
         // size="md"
-        style={{ width: "10%" }}
       >
         <tbody>
           <TableRow sideHighlightColor={item.color}>
             <td style={{ height: "60px" }}>
-              <Body>
-                <Flex justify="between">
-                  <FlexItem>{item.title}</FlexItem>
-                  <FlexItem>
-                    <Badge text={item.number} rounded variant="primary" />
-                  </FlexItem>
-                </Flex>
-              </Body>
+              <div
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    width: "100%",
+                  }}
+                >
+                  <div style={{ width: "70%" }}>
+                    <Caption text={item.title} />
+                  </div>
+
+                  <Pill text={item.number} variant={item.color} />
+                </div>
+              </div>
             </td>
           </TableRow>
           {randomSize.map((item, i) => {
@@ -109,13 +124,6 @@ const Tickets = ({ item }) => {
                         >
                           {issue[getRandomInt(1, issue.length)]}
                         </div>
-
-                        {/* {issue[getRandomInt(1, issue.length)].length > 9
-                          ? `${issue[getRandomInt(1, issue.length)].slice(
-                              0,
-                              10
-                            )}...`
-                          : issue[getRandomInt(1, issue.length)]} */}
                       </FlexItem>
                       <FlexItem>
                         <i class="fas fa-chevron-right"></i>

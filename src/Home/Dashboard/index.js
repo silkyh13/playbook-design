@@ -14,7 +14,7 @@ import {
   IconCircle,
   TextInput,
   Icon,
-  Layout
+  Layout,
 } from "playbook-ui";
 import Ticket from "./Ticket";
 import Graph from "./Graph";
@@ -29,7 +29,7 @@ const trendingStories = [
       "IRS will allow employers to match their employees' student loan...",
     icon: "dollar-sign",
     variant: "green",
-    subReadit: "r/PersonalFinance and more"
+    subReadit: "r/PersonalFinance and more",
   },
   {
     headerColor: "category_2",
@@ -39,7 +39,7 @@ const trendingStories = [
     cardText: "Hong Kong democrat Ted Hui confirms he will go into exile...",
     icon: "globe",
     variant: "yellow",
-    subReadit: "r/WorldNews and more"
+    subReadit: "r/WorldNews and more",
   },
   {
     headerColor: "category_3",
@@ -49,7 +49,7 @@ const trendingStories = [
     cardText: "Relaxing Inside the Space Station's Window to the World...",
     icon: "space-shuttle",
     variant: "blue",
-    subReadit: "r/Space and more"
+    subReadit: "r/Space and more",
   },
   {
     headerColor: "category_4",
@@ -59,8 +59,8 @@ const trendingStories = [
     cardText: "MIT programmed AI that can design its own robots...",
     icon: "microchip",
     variant: "royal",
-    subReadit: "r/Technology and more"
-  }
+    subReadit: "r/Technology and more",
+  },
 ];
 
 const Dashboard = (props) => {
@@ -69,6 +69,9 @@ const Dashboard = (props) => {
       <Flex orientation="column" padding="xl" vertical="center" gap="sm">
         {/* already a flexitem */}
         <Graph />
+        <FlexItem>
+          <Caption text="This weeks ticket escalation" />
+        </FlexItem>
         <FlexItem>
           <Ticket />
         </FlexItem>

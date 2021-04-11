@@ -1,14 +1,14 @@
 import React from "react";
-import { Card, Flex, FlexItem, Badge, Layout } from "playbook-ui";
+import { Card, Flex, FlexItem, Badge, Layout, Caption } from "playbook-ui";
 
 import Tickets from "./Tickets";
 const CardHighlight = (props) => {
   let array = [
-    { title: "NEW", number: 25, color: "category_2" },
-    { title: "MANAGER FEEDBACK", number: 5, color: "category_1" },
-    { title: "PROCESSING", number: 3, color: "category_3" },
+    { title: "NEW", number: 25, color: "info" },
+    { title: "MANAGER FEEDBACK", number: 5, color: "primary" },
+    { title: "PROCESSING", number: 3, color: "warning" },
     { title: "AWAITING FEEDBACK", number: 2, color: "error" },
-    { title: "APPROVED", number: 15, color: "success" }
+    { title: "APPROVED", number: 15, color: "success" },
   ];
   return (
     <div>
@@ -19,6 +19,7 @@ const CardHighlight = (props) => {
         gap="sm"
         paddingLeft="lg"
         paddingRight="lg"
+        style={{ width: "900px" }}
       >
         {array.map((item) => (
           <Tickets item={item} />
