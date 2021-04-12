@@ -9,7 +9,7 @@ import {
   LabelValue,
   Image,
   Icon,
-  Badge
+  Badge,
 } from "playbook-ui";
 
 const HeadNav = (props) => {
@@ -32,6 +32,7 @@ const HeadNav = (props) => {
           <FlexItem grow />
 
           <LabelValue
+            className="badge"
             active
             paddingRight="sm"
             icon="bell"
@@ -39,22 +40,23 @@ const HeadNav = (props) => {
             variant="details"
           />
           <LabelValue
+            className="badge"
             active
             paddingRight="sm"
             icon="envelope"
             title="2"
             variant="details"
           />
-          <Flex>
+          {/* <Flex>
             <FlexItem>
-              <Icon icon="bell"></Icon>
-              <Badge text="4" variant="primary" {...props} />{" "}
+              <Icon className="light" icon="bell"></Icon>
+              <Badge text="4" variant="primary" />
             </FlexItem>
             <FlexItem>
-              <Icon icon="envelope"></Icon>
-              <Badge text="2" variant="primary" {...props} />
+              <Icon className="light" icon="envelope"></Icon>
+              <Badge text="2" variant="primary" />
             </FlexItem>
-          </Flex>
+          </Flex> */}
 
           <div>
             <User

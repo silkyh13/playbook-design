@@ -1,0 +1,83 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.light {
+  color: #687887;
+}
+
+.ticket-caption {
+  .pb_caption_kit_md {
+    color: #c1cdd6 !important;
+  }
+}
+
+.ticket-container {
+  //   width: 900px;
+  .header-container-a {
+    height: 60px !important;
+    .header-container-b {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      .header-container-c {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+
+        .header-caption {
+          width: 20% !important;
+        }
+      }
+    }
+  }
+
+  .elipsis {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 104px;
+  }
+}
+
+.stat-cards {
+  align-self: center !important;
+  flex-basis: 225px !important;
+  display: flex !important;
+  text-align: left;
+  .icon-stat-value i {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .pb_caption_kit_md {
+    color: #c1cdd6;
+    text-transform: none;
+  }
+}
+
+.badge {
+  .pb_flex_kit_orientation_row_justify_content_left_align_items_center_inline_spacing_none {
+    align-items: flex-start !important;
+  }
+  .pb_body_kit_light {
+    margin-right: 0px !important;
+  }
+  .pb_title_kit_4_link {
+    background: rgba(0, 86, 207, 0.1);
+    justify-content: center;
+    border-radius: 4px;
+    padding: 1px 4px 1px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff;
+
+    // transform: translateY(1px);
+    // display: inline-block;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+  }
+}

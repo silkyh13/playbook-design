@@ -69,27 +69,33 @@ const Tickets = ({ item }) => {
         // size="md"
       >
         <tbody>
-          <TableRow sideHighlightColor={item.color}>
-            <td style={{ height: "60px" }}>
+          <TableRow
+            sideHighlightColor={item.color}
+            className="header-container"
+          >
+            <td
+              // style={{ height: "60px" }}
+              className="header-container-a"
+            >
               <div
-                style={{
-                  height: "100%",
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                }}
+                // style={{
+                //   height: "100%",
+                //   width: "100%",
+                //   display: "flex",
+                //   alignItems: "center",
+                // }}
+                className="header-container-b"
               >
                 <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    width: "100%",
-                  }}
+                  className="header-container-c"
+                  // style={{
+                  //   display: "flex",
+                  //   flexDirection: "row",
+                  //   justifyContent: "space-between",
+                  //   width: "100%",
+                  // }}
                 >
-                  <div style={{ width: "70%" }}>
-                    <Caption text={item.title} />
-                  </div>
+                  <Caption text={item.title} className="header-caption" />
 
                   <Pill text={item.number} variant={item.color} />
                 </div>
@@ -112,16 +118,7 @@ const Tickets = ({ item }) => {
                         />
                       </FlexItem>
                       <FlexItem>
-                        <div
-                          className="elipsis"
-                          style={{
-                            display: "block",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                            width: "104px",
-                          }}
-                        >
+                        <div className="elipsis">
                           {issue[getRandomInt(1, issue.length)]}
                         </div>
                       </FlexItem>

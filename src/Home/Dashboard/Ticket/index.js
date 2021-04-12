@@ -19,7 +19,8 @@ const CardHighlight = (props) => {
         gap="sm"
         paddingLeft="lg"
         paddingRight="lg"
-        style={{ width: "900px" }}
+        className="ticket-container"
+        // style={{ width: "900px" }}
       >
         {array.map((item) => (
           <Tickets item={item} />

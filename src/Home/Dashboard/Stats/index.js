@@ -1,71 +1,94 @@
 import React from "react";
-import { IconStatValue } from "playbook-ui";
+import {
+  IconStatValue,
+  Card,
+  Flex,
+  FlexItem,
+  SectionSeparator,
+} from "playbook-ui";
+
+const GridRowFill = ({ data }) => (
+  <Flex orientation="row">
+    {data.map((line, i) => (
+      <div
+        style={{
+          height: "275px",
+          width: "275px",
+        }}
+      >
+        <Card borderRadius="none">
+          <div
+            className="stat-cards"
+            // style={{ alignSelf: "center", flexBasis: "225px", display: "flex" }}
+            // fixedSize="225px"
+            key={`grid-row-item-${line.icon}-${i}`}
+            // margin="lg"
+          >
+            <IconStatValue
+              icon="bell"
+              variant={line.variant}
+              size={line.size}
+              text={line.text}
+              value={line.value}
+              className="icon-stat-value"
+              // style={{
+              //   display: "flex",
+              //   justifyContent: "center",
+              //   alignItems: "center",
+              // }}
+            ></IconStatValue>
+            {/* <SectionSeparator orientation="vertical" /> */}
+          </div>
+        </Card>
+      </div>
+    ))}
+  </Flex>
+);
+
+const IconGrid = ({ gridData }) => (
+  <>
+    <GridRowFill data={gridData.slice(0, 2)} />
+    <SectionSeparator orientation="horizontal" />
+    <GridRowFill data={gridData.slice(2)} />
+  </>
+);
 
 const IconStatValueColor = (props) => {
+  const ticketData = {
+    gridData: [
+      {
+        icon: "ticket-alt",
+        variant: "green",
+        size: "lg",
+        text: "Tickets (YTD)",
+        value: "1,426",
+      },
+      {
+        icon: "times-square",
+        variant: "red",
+        size: "lg",
+        text: "Overdue (YTD)",
+        value: "25",
+      },
+      {
+        icon: "tasks",
+        variant: "teal",
+        size: "lg",
+        text: "Closed Without Action (YTD)",
+        value: "97",
+      },
+      {
+        icon: "exclamation-triangle",
+        variant: "yellow",
+        size: "lg",
+        text: "Escalated (YTD)",
+        value: "896",
+      },
+    ],
+  };
   return (
     <div>
-      <IconStatValue
-        icon="globe-europe"
-        text="Mercury"
-        unit="AU"
-        value={0.39}
-        variant="blue"
-        {...props}
-      />
-      <br />
-      <IconStatValue
-        icon="planet-ringed"
-        text="Venus"
-        unit="AU"
-        value={0.723}
-        variant="royal"
-        {...props}
-      />
-      <br />
-      <IconStatValue
-        icon="planet-moon"
-        text="Earth"
-        unit="AU"
-        value={1.0}
-        variant="purple"
-        {...props}
-      />
-      <br />
-      <IconStatValue
-        icon="solar-system"
-        text="Mars"
-        unit="AU"
-        value={1.524}
-        variant="teal"
-        {...props}
-      />
-      <br />
-      <IconStatValue
-        icon="globe-americas"
-        text="Jupitar"
-        unit="AU"
-        value={5.203}
-        variant="red"
-        {...props}
-      />
-      <br />
-      <IconStatValue
-        icon="globe-africa"
-        text="Saturn"
-        unit="AU"
-        value={9.539}
-        variant="yellow"
-        {...props}
-      />
-      <br />
-      <IconStatValue
-        icon="globe"
-        text="Uranus"
-        unit="AU"
-        value={19.18}
-        variant="green"
-        {...props}
-      />
+      <IconGrid {...ticketData} />
     </div>
   );
 };
