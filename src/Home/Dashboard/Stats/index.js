@@ -11,10 +11,11 @@ const GridRowFill = ({ data }) => (
   <Flex orientation="row">
     {data.map((line, i) => (
       <div
-        style={{
-          height: "275px",
-          width: "275px",
-        }}
+        // style={{
+        //   height: "275px",
+        //   width: "275px",
+        // }}
+        className="stat-container"
       >
         <Card borderRadius="none">
           <div
@@ -31,13 +32,7 @@ const GridRowFill = ({ data }) => (
               text={line.text}
               value={line.value}
               className="icon-stat-value"
-              // style={{
-              //   display: "flex",
-              //   justifyContent: "center",
-              //   alignItems: "center",
-              // }}
             ></IconStatValue>
-            {/* <SectionSeparator orientation="vertical" /> */}
           </div>
         </Card>
       </div>
@@ -48,7 +43,7 @@ const GridRowFill = ({ data }) => (
 const IconGrid = ({ gridData }) => (
   <>
     <GridRowFill data={gridData.slice(0, 2)} />
-    <SectionSeparator orientation="horizontal" />
+    {/* <SectionSeparator orientation="horizontal" /> */}
     <GridRowFill data={gridData.slice(2)} />
   </>
 );

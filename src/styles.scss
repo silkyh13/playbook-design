@@ -42,20 +42,23 @@
     width: 104px;
   }
 }
-
-.stat-cards {
-  align-self: center !important;
-  flex-basis: 225px !important;
-  display: flex !important;
-  text-align: left;
-  .icon-stat-value i {
+.stat-container {
+  height: 275px;
+  width: 275px;
+  .stat-cards {
+    align-self: center !important;
+    flex-basis: 225px !important;
     display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-  }
-  .pb_caption_kit_md {
-    color: #c1cdd6;
-    text-transform: none;
+    text-align: left;
+    .icon-stat-value i {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    .pb_caption_kit_md {
+      color: #c1cdd6;
+      text-transform: none;
+    }
   }
 }
 
@@ -80,4 +83,38 @@
     font-size: 11px !important;
     font-weight: 700 !important;
   }
+}
+
+.pipeline {
+  width: 30vw;
+  min-width: 320px;
+  .title-container {
+    height: 80px;
+  }
+}
+
+[data-status="true"] {
+  color: #00ca74;
+}
+[data-status="false"] {
+  color: red;
+}
+
+.first-component {
+  width: 100% !important;
+}
+
+.performance-tab {
+  width: 100%;
+}
+.xl-padding {
+  padding-left: 10% !important;
+  padding-right: 10% !important;
+}
+
+.row-height {
+  height: 5vh !important;
+}
+.line-graph-height {
+  height: 30vh !important;
 }

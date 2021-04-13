@@ -6,23 +6,20 @@ import {
   FlexItem,
   Nav,
   NavItem,
-  SectionSeparator
+  SectionSeparator,
 } from "playbook-ui";
 
 const HorizontalNav = (props) => {
   return (
     <div className="nav-bar-header-desktop">
-      <Background
-        backgroundColor="white"
-        //  paddingX="lg"
-      >
+      <Background backgroundColor="white" className="xl-padding">
         <Flex
           horizontal="left"
           // paddingLeft="xl" paddingRight="md"
           // spacing="between"
         >
           <FlexItem>
-            <Nav link="#" marginLeft="sm" orientation="horizontal">
+            <Nav link="#" orientation="horizontal">
               <NavItem active link="#" text="Dashboard" />
               <NavItem link="#" text="Products" />
               <NavItem link="#" text="In Progress" />

@@ -73,28 +73,9 @@ const Tickets = ({ item }) => {
             sideHighlightColor={item.color}
             className="header-container"
           >
-            <td
-              // style={{ height: "60px" }}
-              className="header-container-a"
-            >
-              <div
-                // style={{
-                //   height: "100%",
-                //   width: "100%",
-                //   display: "flex",
-                //   alignItems: "center",
-                // }}
-                className="header-container-b"
-              >
-                <div
-                  className="header-container-c"
-                  // style={{
-                  //   display: "flex",
-                  //   flexDirection: "row",
-                  //   justifyContent: "space-between",
-                  //   width: "100%",
-                  // }}
-                >
+            <td className="header-container-a">
+              <div className="header-container-b">
+                <div className="header-container-c">
                   <Caption text={item.title} className="header-caption" />
 
                   <Pill text={item.number} variant={item.color} />

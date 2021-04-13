@@ -19,12 +19,13 @@ import {
 import Ticket from "./Ticket";
 import Graph from "./Graph";
 import Stats from "./Stats";
-import Pipeline from "./PipelineChart";
+import PipelineChart from "./PipelineChart";
+import { pipelineData } from "./PipelineChart/pipeline-data";
 
 const Dashboard = (props) => {
   return (
-    <div>
-      <Flex orientation="column" padding="xl" vertical="center" gap="sm">
+    <Background className="xl-padding">
+      <Flex orientation="column" vertical="center" gap="sm">
         {/* already a flexitem */}
         <Graph />
         <FlexItem className="ticket-caption">
@@ -34,11 +35,14 @@ const Dashboard = (props) => {
           <Ticket />
         </FlexItem>
         <Flex gap="sm" orientation="row">
-          <Pipeline />
+          <PipelineChart
+            title={pipelineData.title}
+            chartData={pipelineData.chartData}
+          />
           <Stats />
         </Flex>
       </Flex>
-    </div>
+    </Background>
   );
 };
 

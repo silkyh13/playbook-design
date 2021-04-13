@@ -20,10 +20,10 @@ const HeadNav = (props) => {
         // paddingBottom="none"
         // paddingTop="md"
         // paddingX="md"
-        paddingX="lg"
+        className="xl-padding"
         // spacing="between"
       >
-        <Flex paddingLeft="lg" paddingY="xs" vertical="center">
+        <Flex vertical="center">
           <Image
             size="xs"
             url="https://logos-world.net/wp-content/uploads/2020/04/BTS-Logo.png"
