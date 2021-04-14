@@ -15,7 +15,7 @@ const CardHighlight = (props) => {
       horizontal="center"
       // wrap
       orientation="row"
-      // gap="xs"
+      gap="xs"
       // paddingLeft="lg"
       // paddingRight="lg"
       className="ticket-container"

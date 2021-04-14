@@ -63,6 +63,7 @@ const Tickets = ({ item }) => {
       orientation="column"
       flex={1}
       className="ticket-flex-main-container"
+      // gap="sm"
     >
       <Table
         className="ticket-table"
@@ -73,23 +74,29 @@ const Tickets = ({ item }) => {
         // size="md"
       >
         <tbody className="ticket-main-body">
-          {/* <TableRow sideHighlightColor={item.color} className="header-container">
-          <td className="header-container-a">
-            <div className="header-container-b">
-              <div className="header-container-c">
-                <Caption text={item.title} className="header-caption" />
+          <TableRow
+            sideHighlightColor={item.color}
+            className="header-container"
+          >
+            <td className="header-container-a">
+              <div className="header-container-b">
+                <div className="header-container-c">
+                  <Caption text={item.title} className="header-caption" />
 
-                <Pill text={item.number} variant={item.color} />
+                  <Pill
+                    text={item.number}
+                    variant={item.color}
+                    className="header-pill"
+                  />
+                </div>
               </div>
-            </div>
-          </td>
-        </TableRow> */}
+            </td>
+          </TableRow>
           {randomSize.map((item, i) => {
             let who = user[getRandomInt(1, user.length)];
             return (
               <tr key={i} className="ticket-row">
                 <td className="ticket-data">
-                  {/* <Body className="ticket-body"> */}
                   <Flex
                     orientation="row"
                     // gap="xs"
@@ -113,7 +120,6 @@ const Tickets = ({ item }) => {
                       <i class="fas fa-chevron-right"></i>
                     </FlexItem>
                   </Flex>
-                  {/* </Body> */}
                 </td>
               </tr>
             );

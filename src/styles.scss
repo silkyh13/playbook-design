@@ -17,16 +17,17 @@
   .ticket-container {
     width: 100%;
     .ticket-flex-main-container {
-      width: 20% !important;
+      width: 18% !important;
       .ticket-table {
         width: 100% !important;
         .ticket-main-body {
           width: 100% !important;
           .header-container-a {
             height: 60px !important;
+
             .header-container-b {
               height: 100%;
-              width: 100%;
+              width: 110% !important;
               display: flex;
               align-items: center;
               .header-container-c {
@@ -34,7 +35,7 @@
                 flex-direction: row;
                 justify-content: space-between;
                 width: 100%;
-
+                align-items: center;
                 .header-caption {
                   width: 20% !important;
                 }
