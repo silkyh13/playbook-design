@@ -26,7 +26,7 @@ const Tickets = ({ item }) => {
   let issue = [
     "Missing Part",
     "Not Performing",
-    "Unexpected",
+    "Issue",
     "Unexpected Gibberish",
     "Need Technician",
   ];
@@ -59,17 +59,21 @@ const Tickets = ({ item }) => {
     },
   ];
   return (
-    // <FlexItem nowrap orientation="column" flex={1}>
-    <Table
-      className="ticket-table"
-      // container={false}
-      // disableHover
-      // marginTop="md"
-      // responsive="none"
-      // size="md"
+    <FlexItem
+      orientation="column"
+      flex={1}
+      className="ticket-flex-main-container"
     >
-      <tbody>
-        <TableRow sideHighlightColor={item.color} className="header-container">
+      <Table
+        className="ticket-table"
+        // container={false}
+        // disableHover
+        // marginTop="md"
+        // responsive="none"
+        // size="md"
+      >
+        <tbody className="ticket-main-body">
+          {/* <TableRow sideHighlightColor={item.color} className="header-container">
           <td className="header-container-a">
             <div className="header-container-b">
               <div className="header-container-c">
@@ -79,14 +83,19 @@ const Tickets = ({ item }) => {
               </div>
             </div>
           </td>
-        </TableRow>
-        {randomSize.map((item, i) => {
-          let who = user[getRandomInt(1, user.length)];
-          return (
-            <tr key={i}>
-              <td>
-                <Body>
-                  <Flex orientation="row" gap="xs" justify="around">
+        </TableRow> */}
+          {randomSize.map((item, i) => {
+            let who = user[getRandomInt(1, user.length)];
+            return (
+              <tr key={i} className="ticket-row">
+                <td className="ticket-data">
+                  {/* <Body className="ticket-body"> */}
+                  <Flex
+                    orientation="row"
+                    // gap="xs"
+                    justify="around"
+                    className="ticket-flex"
+                  >
                     <FlexItem>
                       <Avatar
                         imageAlt="Terry Johnson Standing"
@@ -95,23 +104,23 @@ const Tickets = ({ item }) => {
                         size="xs"
                       />
                     </FlexItem>
-                    <FlexItem>
+                    <div className="center-content">
                       <div className="elipsis">
                         {issue[getRandomInt(1, issue.length)]}
                       </div>
-                    </FlexItem>
+                    </div>
                     <FlexItem>
                       <i class="fas fa-chevron-right"></i>
                     </FlexItem>
                   </Flex>
-                </Body>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </Table>
-    // </FlexItem>
+                  {/* </Body> */}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    </FlexItem>
   );
 };
 

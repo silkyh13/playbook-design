@@ -16,32 +16,58 @@
   width: 100% !important;
   .ticket-container {
     width: 100%;
-    .header-container-a {
-      height: 60px !important;
-      .header-container-b {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        .header-container-c {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          width: 100%;
+    .ticket-flex-main-container {
+      width: 20% !important;
+      .ticket-table {
+        width: 100% !important;
+        .ticket-main-body {
+          width: 100% !important;
+          .header-container-a {
+            height: 60px !important;
+            .header-container-b {
+              height: 100%;
+              width: 100%;
+              display: flex;
+              align-items: center;
+              .header-container-c {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
 
-          .header-caption {
-            width: 20% !important;
+                .header-caption {
+                  width: 20% !important;
+                }
+              }
+            }
+          }
+          .ticket-row {
+            width: 100% !important;
+            .ticket-data {
+              padding-left: 0px !important;
+              padding-right: 0px !important;
+              width: 100% !important;
+
+              .ticket-flex {
+                align-items: center;
+                width: 100% !important;
+                .center-content {
+                  display: flex;
+                  text-align: start;
+                  width: 50%;
+                  .elipsis {
+                    display: block;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    width: 100%;
+                  }
+                }
+              }
+            }
           }
         }
       }
-    }
-
-    .elipsis {
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      width: 104px;
     }
   }
 }
