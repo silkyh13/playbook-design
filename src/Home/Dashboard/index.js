@@ -31,7 +31,7 @@ const Dashboard = (props) => {
         <FlexItem className="ticket-caption">
           <Caption text="This weeks ticket escalation" />
         </FlexItem>
-        <FlexItem>
+        <FlexItem className="ticket-system">
           <Ticket />
         </FlexItem>
         <Flex gap="sm" orientation="row">

@@ -12,34 +12,37 @@
   }
 }
 
-.ticket-container {
-  //   width: 900px;
-  .header-container-a {
-    height: 60px !important;
-    .header-container-b {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      .header-container-c {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+.ticket-system {
+  width: 100% !important;
+  .ticket-container {
+    width: 100%;
+    .header-container-a {
+      height: 60px !important;
+      .header-container-b {
+        height: 100%;
         width: 100%;
+        display: flex;
+        align-items: center;
+        .header-container-c {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
 
-        .header-caption {
-          width: 20% !important;
+          .header-caption {
+            width: 20% !important;
+          }
         }
       }
     }
-  }
 
-  .elipsis {
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 104px;
+    .elipsis {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 104px;
+    }
   }
 }
 .stat-container {
@@ -102,19 +105,58 @@
 
 .first-component {
   width: 100% !important;
+  .light {
+    color: #c1cdd6 !important;
+  }
+  .card {
+    width: 100%;
+  }
+
+  .second-row {
+    .performance-tab {
+      width: 20%;
+      margin: 0 -2px 0 0;
+      .row-height {
+        height: 7vh !important;
+        .padding-tab {
+          padding-right: 1vw !important;
+          padding-left: 1vw !important;
+        }
+      }
+    }
+  }
+
+  .graph-container {
+    width: 81% !important;
+    margin-top: -1px;
+    #line-fixed-height {
+      //   background-color: pink !important;
+      //   height: 30vh;
+      padding: 0 1px;
+      //   width: 100% !important;
+    }
+  }
 }
 
-.performance-tab {
-  width: 100%;
-}
 .xl-padding {
-  padding-left: 10% !important;
-  padding-right: 10% !important;
+  padding-left: 15% !important;
+  padding-right: 15% !important;
 }
 
-.row-height {
-  height: 5vh !important;
-}
-.line-graph-height {
-  height: 30vh !important;
+.border-meow-meow {
+  border-width: 1px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-style: solid;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-color: #e4e8f0;
+  border-top-color: rgb(228, 232, 240);
+  border-right-color: rgb(228, 232, 240);
+  border-bottom-color: rgb(228, 232, 240);
+  border-left-color: rgb(228, 232, 240);
 }

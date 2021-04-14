@@ -11,21 +11,19 @@ const CardHighlight = (props) => {
     { title: "APPROVED", number: 15, color: "success" },
   ];
   return (
-    <div>
-      <Flex
-        horizontal="center"
-        wrap
-        orientation="row"
-        gap="sm"
-        paddingLeft="lg"
-        paddingRight="lg"
-        className="ticket-container"
-      >
-        {array.map((item) => (
-          <Tickets item={item} />
-        ))}
-      </Flex>
-    </div>
+    <Flex
+      horizontal="center"
+      // wrap
+      orientation="row"
+      // gap="xs"
+      // paddingLeft="lg"
+      // paddingRight="lg"
+      className="ticket-container"
+    >
+      {array.map((item) => (
+        <Tickets item={item} />
+      ))}
+    </Flex>
   );
 };
 

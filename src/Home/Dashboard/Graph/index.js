@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import {
   LineGraph,
   Flex,
@@ -7,10 +7,14 @@ import {
   Card,
   Nav,
   Background,
-  StatChange,
-  NavItem,
+  Button,
+  Icon,
   Table,
   TableRow,
+  Caption,
+  IconValue,
+  IconCircle,
+  CircleIconButton,
 } from "playbook-ui";
 
 const data = [
@@ -24,83 +28,126 @@ const keyPerformance = [
   { tab: "Orders", change: -2 },
   { tab: "Profit" },
   { tab: "Average Check", change: 5 },
-  { tab: "Canceled", change: 18 },
+  { tab: "Canceled", change: -18 },
   { tab: "Repeat Sales" },
 ];
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      let performanceTab = document.getElementsByClassName(
+        "performance-tab"
+      )[0];
+      if (document.getElementsByClassName("first-component")) {
+        console.log("made it here");
+        document
+          .getElementsByClassName("first-component")[0]
+          .getElementsByClassName("graph-container")[0].style.height = `${
+          performanceTab.offsetHeight + 1
+        }px`;
+      }
+      if (document.getElementsByClassName("highcharts-root")) {
+        document.getElementsByClassName("highcharts-root")[0].style.height =
+          performanceTab.offsetHeight - 34;
+      }
 
-const LineGraphLegend = (props) => (
-  <div className="first-component">
-    <Flex orientation="row">
-      <Card borderRadius="none" className="performance-tab ">
-        <Flex orientation="row" spacing="between">
-          <FlexItem>
-            <Title size={4} tag="h4" text="Title 4" />
+      setSize([performanceTab.offsetWidth, performanceTab.offsetHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size;
+}
+const LineGraphLegend = (props) => {
+  const [width, height] = useWindowSize();
+  const [newHeight, setNewHeight] = useState(320);
+  useState(() => {
+    let string = height.toString() + "px";
+    console.log(height, "ihihih");
+    setNewHeight(string);
+  }, [newHeight, height]);
+  return (
+    <div className="first-component">
+      <Flex orientation="column" marginTop="lg" marginBottom="sm">
+        <Caption text="Dashboard" className="light" />
+        <Title size={3} tag="h3" text="Commerce Dashboard" />
+      </Flex>
+
+      <Card borderRadius="none" className="card" padding="xs">
+        <Flex orientation="row" spacing="between" vertical="center">
+          <FlexItem paddingX="xs">
+            <Title size={4} tag="h4" text="Key Performance Indicators" />
           </FlexItem>
-          <FlexItem>...</FlexItem>
+          <CircleIconButton icon="comment-dots" variant="secondary" />
         </Flex>
       </Card>
-    </Flex>
 
-    {/* <Flex orientation="row">
-      <div className="performance-tab">
-        <Table size="md">
-          <tbody>
-            {keyPerformance.map((item, i) => (
-              <TableRow
-                sideHighlightColor={
-                  item.tab !== "Revenue" ? "none" : "category_1"
-                }
-                className="row-height"
-              >
-                <td>
-                  <Flex orientation="horizontal" spacing="between">
-                    <div className="data-a">{item.tab}</div>
-                    <div
-                      className="data-status"
-                      data-status={item.change > 0 ? "true" : "false"}
-                    >
-                      {item.change > 0 ? (
-                        <i class="fas fa-arrow-up"></i>
-                      ) : item.change < 0 ? (
-                        <i class="fas fa-arrow-down"></i>
-                      ) : (
-                        ""
-                      )}
+      <Flex orientation="row" className="second-row">
+        <div className="performance-tab">
+          <Table size="md">
+            <tbody>
+              {keyPerformance.map((item, i) => (
+                <TableRow
+                  key={i}
+                  sideHighlightColor={
+                    item.tab !== "Revenue" ? "none" : "category_1"
+                  }
+                  className="row-height"
+                >
+                  <td className="padding-tab">
+                    <Flex orientation="horizontal" spacing="between">
+                      <div className="data-a">{item.tab}</div>
+                      <div
+                        className="data-status"
+                        data-status={item.change > 0 ? "true" : "false"}
+                      >
+                        {item.change > 0 ? (
+                          <i class="fas fa-arrow-up"></i>
+                        ) : item.change < 0 ? (
+                          <i class="fas fa-arrow-down"></i>
+                        ) : (
+                          ""
+                        )}
 
-                      {item.change && item.change + "%"}
-                    </div>
-                  </Flex>
-                </td>
-              </TableRow>
-            ))}
-          </tbody>
-        </Table>
-      </div>
+                        {item.change && Math.abs(item.change) + "%"}
+                      </div>
+                    </Flex>
+                  </td>
+                </TableRow>
+              ))}
+            </tbody>
+          </Table>
+        </div>
 
-      <Background borderRadius="none">
-        <LineGraph
-          axisTitle="Number of Employees"
-          chartData={data}
-          id="line-fixed-height"
-          className="line-graph-height"
-          xAxisCategories={[
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ]}
-          yAxisMin={0}
-        />
-      </Background>
-    </Flex> */}
-  </div>
-);
+        <Background
+          borderRadius="none"
+          backgroundColor="white"
+          paddingY="xs"
+          // paddingTop="sm"
+          className="graph-container border-meow-meow"
+        >
+          <LineGraph
+            paddingTop="md"
+            axisTitle="Number of Employees"
+            chartData={data}
+            id="line-fixed-height"
+            xAxisCategories={[
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+            ]}
+            // height="40%"
+            yAxisMin={0}
+          />
+        </Background>
+      </Flex>
+    </div>
+  );
+};
 export default LineGraphLegend;

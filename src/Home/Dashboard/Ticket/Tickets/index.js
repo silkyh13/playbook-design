@@ -59,62 +59,59 @@ const Tickets = ({ item }) => {
     },
   ];
   return (
-    <FlexItem nowrap orientation="column" flex={1}>
-      <Table
-        className="ticket-table"
-        // container={false}
-        // disableHover
-        // marginTop="md"
-        // responsive="none"
-        // size="md"
-      >
-        <tbody>
-          <TableRow
-            sideHighlightColor={item.color}
-            className="header-container"
-          >
-            <td className="header-container-a">
-              <div className="header-container-b">
-                <div className="header-container-c">
-                  <Caption text={item.title} className="header-caption" />
+    // <FlexItem nowrap orientation="column" flex={1}>
+    <Table
+      className="ticket-table"
+      // container={false}
+      // disableHover
+      // marginTop="md"
+      // responsive="none"
+      // size="md"
+    >
+      <tbody>
+        <TableRow sideHighlightColor={item.color} className="header-container">
+          <td className="header-container-a">
+            <div className="header-container-b">
+              <div className="header-container-c">
+                <Caption text={item.title} className="header-caption" />
 
-                  <Pill text={item.number} variant={item.color} />
-                </div>
+                <Pill text={item.number} variant={item.color} />
               </div>
-            </td>
-          </TableRow>
-          {randomSize.map((item, i) => {
-            let who = user[getRandomInt(1, user.length)];
-            return (
-              <tr key={i}>
-                <td>
-                  <Body>
-                    <Flex orientation="row" gap="xs" justify="around">
-                      <FlexItem>
-                        <Avatar
-                          imageAlt="Terry Johnson Standing"
-                          imageUrl={who.imageUrl}
-                          name={who.name}
-                          size="xs"
-                        />
-                      </FlexItem>
-                      <FlexItem>
-                        <div className="elipsis">
-                          {issue[getRandomInt(1, issue.length)]}
-                        </div>
-                      </FlexItem>
-                      <FlexItem>
-                        <i class="fas fa-chevron-right"></i>
-                      </FlexItem>
-                    </Flex>
-                  </Body>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-    </FlexItem>
+            </div>
+          </td>
+        </TableRow>
+        {randomSize.map((item, i) => {
+          let who = user[getRandomInt(1, user.length)];
+          return (
+            <tr key={i}>
+              <td>
+                <Body>
+                  <Flex orientation="row" gap="xs" justify="around">
+                    <FlexItem>
+                      <Avatar
+                        imageAlt="Terry Johnson Standing"
+                        imageUrl={who.imageUrl}
+                        name={who.name}
+                        size="xs"
+                      />
+                    </FlexItem>
+                    <FlexItem>
+                      <div className="elipsis">
+                        {issue[getRandomInt(1, issue.length)]}
+                      </div>
+                    </FlexItem>
+                    <FlexItem>
+                      <i class="fas fa-chevron-right"></i>
+                    </FlexItem>
+                  </Flex>
+                </Body>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </Table>
+    // </FlexItem>
   );
 };
 

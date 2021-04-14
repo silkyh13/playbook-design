@@ -26,7 +26,7 @@ const GridRowFill = ({ data }) => (
             // margin="lg"
           >
             <IconStatValue
-              icon="bell"
+              icon="frown"
               variant={line.variant}
               size={line.size}
               text={line.text}
