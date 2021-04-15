@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Flex,
   Icon,
@@ -15,14 +15,16 @@ import {
   Badge,
   Pill,
   TextInput,
+  Button,
 } from "playbook-ui";
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
-const Tickets = ({ item }) => {
-  let randomSize = Array(getRandomInt(1, 6)).fill("meow");
+const Tickets = ({ item, width, i }) => {
+  const [randomSize, setRandomSize] = useState([]);
+
   let issue = [
     "Missing Part",
     "Not Performing",
@@ -30,6 +32,7 @@ const Tickets = ({ item }) => {
     "Unexpected Gibberish",
     "Need Technician",
   ];
+
   let user = [
     {
       name: "Patrick Welch",
@@ -58,30 +61,56 @@ const Tickets = ({ item }) => {
       name: "Red Velvet",
     },
   ];
+  useEffect(() => {
+    let meow = [];
+    for (let i = 0; i < getRandomInt(1, 5); i++) {
+      meow.push({
+        user: user[getRandomInt(1, user.length)],
+        issue: issue[getRandomInt(1, issue.length)],
+      });
+    }
+    setRandomSize([...meow]);
+  }, []);
+  function updateDataTitle() {
+    let a = document.getElementById(`header-container-a ${i}`);
+    if (a) a.setAttribute("data-title", "");
+    randomSize.forEach((elem, index) => {
+      console.log(item.title);
+      let b = document.getElementById(`${item.title} ${index}`);
+
+      if (b) b.setAttribute("data-title", "");
+    });
+  }
+  useEffect(() => {
+    if (randomSize.length) {
+      window.addEventListener("resize", updateDataTitle);
+      console.log(item.title, "size was change", randomSize, i);
+    }
+  }, [randomSize]);
   return (
     <FlexItem
-      orientation="column"
+      key={i}
+      orientation="row"
       flex={1}
-      className="ticket-flex-main-container"
-      // gap="sm"
+      className={width > 1300 ? "" : "ticket-flex-main-container"}
     >
-      <Table
-        className="ticket-table"
-        // container={false}
-        // disableHover
-        // marginTop="md"
-        // responsive="none"
-        // size="md"
-      >
+      <Table className="ticket-table">
         <tbody className="ticket-main-body">
           <TableRow
             sideHighlightColor={item.color}
             className="header-container"
           >
-            <td className="header-container-a">
-              <div className="header-container-b">
+            <td
+              className={width < 574 ? "hi" : "header-container-a"}
+              id={`header-container-a ${i}`}
+            >
+              <div
+                className={"header-container-b " + (width > 1300 ? "a" : "b")}
+              >
                 <div className="header-container-c">
-                  <Caption text={item.title} className="header-caption" />
+                  <Flex>
+                    <Caption text={item.title} className="header-caption" />
+                  </Flex>
 
                   <Pill
                     text={item.number}
@@ -92,38 +121,37 @@ const Tickets = ({ item }) => {
               </div>
             </td>
           </TableRow>
-          {randomSize.map((item, i) => {
-            let who = user[getRandomInt(1, user.length)];
-            return (
-              <tr key={i} className="ticket-row">
-                <td className="ticket-data">
-                  <Flex
-                    orientation="row"
-                    // gap="xs"
-                    justify="around"
-                    className="ticket-flex"
-                  >
-                    <FlexItem>
-                      <Avatar
-                        imageAlt="Terry Johnson Standing"
-                        imageUrl={who.imageUrl}
-                        name={who.name}
-                        size="xs"
-                      />
-                    </FlexItem>
-                    <div className="center-content">
-                      <div className="elipsis">
-                        {issue[getRandomInt(1, issue.length)]}
+          {randomSize &&
+            randomSize.map((elem, index) => {
+              let who = elem.user;
+
+              return (
+                <tr key={index} className="ticket-row">
+                  <td className="ticket-data" id={`${item.title} ${index}`}>
+                    <Flex
+                      orientation="row"
+                      justify="around"
+                      className="ticket-flex"
+                    >
+                      <FlexItem>
+                        <Avatar
+                          imageAlt="Terry Johnson Standing"
+                          imageUrl={who.imageUrl}
+                          name={who.name}
+                          size="xs"
+                        />
+                      </FlexItem>
+                      <div className="center-content">
+                        <div className="elipsis">{elem.issue}</div>
                       </div>
-                    </div>
-                    <FlexItem>
-                      <i class="fas fa-chevron-right"></i>
-                    </FlexItem>
-                  </Flex>
-                </td>
-              </tr>
-            );
-          })}
+                      <FlexItem>
+                        <i class="fas fa-chevron-right"></i>
+                      </FlexItem>
+                    </Flex>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </Table>
     </FlexItem>

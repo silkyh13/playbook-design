@@ -19,7 +19,11 @@ const HorizontalNav = (props) => {
           // spacing="between"
         >
           <FlexItem>
-            <Nav link="#" orientation="horizontal">
+            <Nav
+              link="#"
+              // marginLeft="sm"
+              orientation="horizontal"
+            >
               <NavItem active link="#" text="Dashboard" />
               <NavItem link="#" text="Products" />
               <NavItem link="#" text="In Progress" />

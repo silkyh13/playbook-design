@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
+import React from "react";
 import {
   LineGraph,
   Flex,
@@ -31,42 +31,15 @@ const keyPerformance = [
   { tab: "Canceled", change: -18 },
   { tab: "Repeat Sales" },
 ];
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      let performanceTab = document.getElementsByClassName(
-        "performance-tab"
-      )[0];
-      if (document.getElementsByClassName("first-component")) {
-        console.log("made it here");
-        document
-          .getElementsByClassName("first-component")[0]
-          .getElementsByClassName("graph-container")[0].style.height = `${
-          performanceTab.offsetHeight + 1
-        }px`;
-      }
-      if (document.getElementsByClassName("highcharts-root")) {
-        document.getElementsByClassName("highcharts-root")[0].style.height =
-          performanceTab.offsetHeight - 34;
-      }
 
-      setSize([performanceTab.offsetWidth, performanceTab.offsetHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  return size;
-}
-const LineGraphLegend = (props) => {
+const LineGraphLegend = ({ useWindowSize }) => {
   const [width, height] = useWindowSize();
-  const [newHeight, setNewHeight] = useState(320);
-  useState(() => {
-    let string = height.toString() + "px";
-    console.log(height, "ihihih");
-    setNewHeight(string);
-  }, [newHeight, height]);
+  // const [newHeight, setNewHeight] = useState(320);
+  // useState(() => {
+  //   let string = height.toString() + "px";
+  //   console.log(height, "ihihih");
+  //   setNewHeight(string);
+  // }, [newHeight, height]);
   return (
     <div className="first-component">
       <Flex orientation="column" marginTop="lg" marginBottom="sm">
@@ -79,6 +52,9 @@ const LineGraphLegend = (props) => {
           <FlexItem paddingX="xs">
             <Title size={4} tag="h4" text="Key Performance Indicators" />
           </FlexItem>
+          <span>
+            Window size: {width} x {height}
+          </span>
           <CircleIconButton icon="comment-dots" variant="secondary" />
         </Flex>
       </Card>
@@ -97,7 +73,13 @@ const LineGraphLegend = (props) => {
                 >
                   <td className="padding-tab">
                     <Flex orientation="horizontal" spacing="between">
-                      <div className="data-a">{item.tab}</div>
+                      <div
+                        className={
+                          "data-a " + (width < 1135 ? "desktop-2" : "")
+                        }
+                      >
+                        {item.tab}
+                      </div>
                       <div
                         className="data-status"
                         data-status={item.change > 0 ? "true" : "false"}

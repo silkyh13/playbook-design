@@ -17,52 +17,56 @@
   .ticket-container {
     width: 100%;
     .ticket-flex-main-container {
-      width: 18% !important;
-      .ticket-table {
+      width: 100% !important;
+    }
+    .ticket-table {
+      width: 100% !important;
+      .ticket-main-body {
         width: 100% !important;
-        .ticket-main-body {
-          width: 100% !important;
-          .header-container-a {
-            height: 60px !important;
+        .header-container-a {
+          //   display: flex;
+          height: 60px !important;
+        }
+        .a {
+          width: 110% !important;
+        }
 
-            .header-container-b {
-              height: 100%;
-              width: 110% !important;
-              display: flex;
-              align-items: center;
-              .header-container-c {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                width: 100%;
-                align-items: center;
-                .header-caption {
-                  width: 20% !important;
-                }
-              }
+        .header-container-b {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          .header-container-c {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+            .header-caption {
+              width: 20% !important;
             }
           }
-          .ticket-row {
+        }
+        .ticket-row {
+          width: 100% !important;
+          .ticket-data {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
             width: 100% !important;
-            .ticket-data {
-              padding-left: 0px !important;
-              padding-right: 0px !important;
-              width: 100% !important;
 
-              .ticket-flex {
-                align-items: center;
-                width: 100% !important;
-                .center-content {
-                  display: flex;
-                  text-align: start;
-                  width: 50%;
-                  .elipsis {
-                    display: block;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                    width: 100%;
-                  }
+            .ticket-flex {
+              align-items: center;
+              width: 100% !important;
+              .center-content {
+                display: flex;
+                text-align: start;
+                width: 50%;
+                .elipsis {
+                  display: block;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  width: 100%;
                 }
               }
             }
@@ -148,6 +152,13 @@
         .padding-tab {
           padding-right: 1vw !important;
           padding-left: 1vw !important;
+
+          .data-a {
+            float: left !important;
+          }
+          .desktop-2 {
+            width: 20% !important;
+          }
         }
       }
     }

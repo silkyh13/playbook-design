@@ -20,8 +20,6 @@ const GridRowFill = ({ data }) => (
         <Card borderRadius="none">
           <div
             className="stat-cards"
-            // style={{ alignSelf: "center", flexBasis: "225px", display: "flex" }}
-            // fixedSize="225px"
             key={`grid-row-item-${line.icon}-${i}`}
             // margin="lg"
           >
