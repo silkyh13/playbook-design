@@ -24,7 +24,7 @@ function getRandomInt(min, max) {
 }
 const Tickets = ({ item, width, i }) => {
   const [randomSize, setRandomSize] = useState([]);
-
+  const [headerAttribute, setHeaderAttribute] = useState("");
   let issue = [
     "Missing Part",
     "Not Performing",
@@ -72,21 +72,25 @@ const Tickets = ({ item, width, i }) => {
     setRandomSize([...meow]);
   }, []);
   function updateDataTitle() {
-    let a = document.getElementById(`header-container-a ${i}`);
-    if (a) a.setAttribute("data-title", "");
-    randomSize.forEach((elem, index) => {
-      console.log(item.title);
-      let b = document.getElementById(`${item.title} ${index}`);
-
+    for (let i = 0; i < randomSize.length + 1; i++) {
+      let b = document.getElementById(`${item.title} ${i}`);
       if (b) b.setAttribute("data-title", "");
-    });
-  }
-  useEffect(() => {
-    if (randomSize.length) {
-      window.addEventListener("resize", updateDataTitle);
-      console.log(item.title, "size was change", randomSize, i);
+      b.setAttribute("title", "aeioraoiejf");
     }
-  }, [randomSize]);
+  }
+  // useEffect(() => {
+  //   window.addEventListener("resize", updateDataTitle);
+  // }, [headerAttribute]);
+
+  useEffect(() => {
+    // if (randomSize.length) {
+    updateDataTitle();
+    // window.addEventListener("resize", updateDataTitle);
+
+    // console.log(item.title, "size was change", randomSize, i);
+    // setHeaderAttribute(!headerAttribute);
+    // }
+  }, [width]);
   return (
     <FlexItem
       key={i}
@@ -102,7 +106,7 @@ const Tickets = ({ item, width, i }) => {
           >
             <td
               className={width < 574 ? "hi" : "header-container-a"}
-              id={`header-container-a ${i}`}
+              id={`${item.title} 0`}
             >
               <div
                 className={"header-container-b " + (width > 1300 ? "a" : "b")}
@@ -127,7 +131,7 @@ const Tickets = ({ item, width, i }) => {
 
               return (
                 <tr key={index} className="ticket-row">
-                  <td className="ticket-data" id={`${item.title} ${index}`}>
+                  <td className="ticket-data" id={`${item.title} ${index + 1}`}>
                     <Flex
                       orientation="row"
                       justify="around"
