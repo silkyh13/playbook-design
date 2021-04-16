@@ -33,31 +33,7 @@ const keyPerformance = [
   { tab: "Repeat Sales" },
 ];
 
-const LineGraphLegend = ({ width, height }) => {
-  // const [results, setResults] = useState([]);
-  // useState(() => {
-  //   let string = height.toString() + "px";
-  //   console.log(height, "ihihih");
-  //   setNewHeight(string);
-  // }, [newHeight, height]);
-  // function updateDataTitle() {
-  //   for (let i = 0; i < keyPerformance.length; i++) {
-  //     let b = document.getElementById(keyPerformance[i].tab);
-
-  //     if (b) {
-  //       console.log("", keyPerformance[i].tab, b.getAttribute("data-title"));
-
-  //       b.setAttribute("data-title", "meow");
-  //       console.log("after", b.getAttribute("data-title"));
-  //     }
-  //   }
-  // }
-  // useEffect(() => {
-  //   window.addEventListener("resize", updateDataTitle);
-  //   updateDataTitle();
-  //   return () => window.removeEventListener("resize", updateDataTitle);
-  // }, [width]);
-
+const LineGraphLegend = ({ width }) => {
   var rows = [];
   for (var i = 0; i < keyPerformance.length; i++) {
     rows.push(
@@ -177,7 +153,7 @@ const LineGraphLegend = ({ width, height }) => {
               "Jul",
               "Aug",
             ]}
-            // height="40%"
+            // height="30%"
             yAxisMin={0}
           />
         </Background>

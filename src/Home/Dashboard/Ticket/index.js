@@ -2,9 +2,7 @@ import React from "react";
 import { Card, Flex, FlexItem, Badge, Layout, Caption } from "playbook-ui";
 
 import Tickets from "./Tickets";
-const CardHighlight = ({ useWindowSize }) => {
-  const [width, height] = useWindowSize();
-
+const CardHighlight = ({ width }) => {
   let array = [
     { title: "NEW", number: 25, color: "info", items: 5 },
     { title: "MANAGER FEEDBACK", number: 5, color: "primary", items: 5 },

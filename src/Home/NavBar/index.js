@@ -12,16 +12,12 @@ import {
   Badge,
 } from "playbook-ui";
 
-const HeadNav = (props) => {
+const HeadNav = ({ width }) => {
   return (
     <div className="nav-bar-header-desktop">
       <Background
         backgroundColor="white"
-        // paddingBottom="none"
-        // paddingTop="md"
-        // paddingX="md"
-        className="xl-padding"
-        // spacing="between"
+        className={width > 710 && "xl-padding"}
       >
         <Flex vertical="center">
           <Image
@@ -47,16 +43,6 @@ const HeadNav = (props) => {
             title="2"
             variant="details"
           />
-          {/* <Flex>
-            <FlexItem>
-              <Icon className="light" icon="bell"></Icon>
-              <Badge text="4" variant="primary" />
-            </FlexItem>
-            <FlexItem>
-              <Icon className="light" icon="envelope"></Icon>
-              <Badge text="2" variant="primary" />
-            </FlexItem>
-          </Flex> */}
 
           <div>
             <User

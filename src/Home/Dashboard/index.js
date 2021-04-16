@@ -21,44 +21,17 @@ import Graph from "./Graph";
 import Stats from "./Stats";
 import PipelineChart from "./PipelineChart";
 import { pipelineData } from "./PipelineChart/pipeline-data";
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      let performanceTab = document.getElementsByClassName(
-        "performance-tab"
-      )[0];
-      if (document.getElementsByClassName("first-component")) {
-        document
-          .getElementsByClassName("first-component")[0]
-          .getElementsByClassName("graph-container")[0].style.height = `${
-          performanceTab.offsetHeight + 1
-        }px`;
-      }
-      if (document.getElementsByClassName("highcharts-root")) {
-        document.getElementsByClassName("highcharts-root")[0].style.height =
-          performanceTab.offsetHeight - 34;
-      }
 
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  return size;
-}
-const Dashboard = (props) => {
-  const [width, height] = useWindowSize();
+const Dashboard = ({ width }) => {
   return (
     <Background className="xl-padding">
       <Flex orientation="column" vertical="center" gap="sm">
-        <Graph width={width} height={height} />
+        <Graph width={width} />
         <FlexItem className="ticket-caption">
           <Caption text="This weeks ticket escalation" />
         </FlexItem>
         <FlexItem className="ticket-system">
-          <Ticket useWindowSize={useWindowSize} />
+          <Ticket width={width} />
         </FlexItem>
         <Flex
           gap="sm"
