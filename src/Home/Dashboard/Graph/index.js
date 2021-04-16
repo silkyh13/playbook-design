@@ -97,9 +97,7 @@ const LineGraphLegend = ({ width, height }) => {
           <FlexItem paddingX="xs">
             <Title size={4} tag="h4" text="Key Performance Indicators" />
           </FlexItem>
-          <span>
-            Window size: {width} x {height}
-          </span>
+
           <CircleIconButton icon="comment-dots" variant="secondary" />
         </Flex>
       </Card>

@@ -182,7 +182,7 @@ const Tickets = ({ item, width, i }) => {
               let who = elem.user;
 
               return (
-                <Card key={index}>
+                <Card key={index} className={index > show * 3 && "disappear"}>
                   <Flex
                     orientation="row"
                     justify="between"
@@ -206,6 +206,17 @@ const Tickets = ({ item, width, i }) => {
                 </Card>
               );
             })}
+          <Card padding="sm">
+            {/* <td className="ticket-data button-row"> */}
+            <Flex orientation="row" justify="around">
+              <Button
+                onClick={() => setShow(show + 1)}
+                text="Show More"
+                variant="link"
+              />
+            </Flex>
+            {/* </td> */}
+          </Card>
         </div>
       )}
     </FlexItem>
