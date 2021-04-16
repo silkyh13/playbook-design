@@ -29,7 +29,6 @@ function useWindowSize() {
         "performance-tab"
       )[0];
       if (document.getElementsByClassName("first-component")) {
-        console.log("made it here");
         document
           .getElementsByClassName("first-component")[0]
           .getElementsByClassName("graph-container")[0].style.height = `${
@@ -50,18 +49,23 @@ function useWindowSize() {
   return size;
 }
 const Dashboard = (props) => {
+  const [width, height] = useWindowSize();
   return (
     <Background className="xl-padding">
       <Flex orientation="column" vertical="center" gap="sm">
-        {/* already a flexitem */}
-        <Graph useWindowSize={useWindowSize} />
+        <Graph width={width} height={height} />
         <FlexItem className="ticket-caption">
           <Caption text="This weeks ticket escalation" />
         </FlexItem>
         <FlexItem className="ticket-system">
           <Ticket useWindowSize={useWindowSize} />
         </FlexItem>
-        <Flex gap="sm" orientation="row">
+        <Flex
+          gap="sm"
+          orientation={width >= 946 ? "row" : "column"}
+          vertical="center"
+          className="graph-and-stat"
+        >
           <PipelineChart
             title={pipelineData.title}
             chartData={pipelineData.chartData}

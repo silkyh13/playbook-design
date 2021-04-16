@@ -10,13 +10,7 @@ import {
 const GridRowFill = ({ data }) => (
   <Flex orientation="row">
     {data.map((line, i) => (
-      <div
-        // style={{
-        //   height: "275px",
-        //   width: "275px",
-        // }}
-        className="stat-container"
-      >
+      <div key={i} className="stat-container">
         <Card borderRadius="none">
           <div
             className="stat-cards"
@@ -52,28 +46,28 @@ const IconStatValueColor = (props) => {
       {
         icon: "ticket-alt",
         variant: "green",
-        size: "lg",
+        size: "md",
         text: "Tickets (YTD)",
         value: "1,426",
       },
       {
         icon: "times-square",
         variant: "red",
-        size: "lg",
+        size: "md",
         text: "Overdue (YTD)",
         value: "25",
       },
       {
         icon: "tasks",
         variant: "teal",
-        size: "lg",
+        size: "md",
         text: "Closed Without Action (YTD)",
         value: "97",
       },
       {
         icon: "exclamation-triangle",
         variant: "yellow",
-        size: "lg",
+        size: "md",
         text: "Escalated (YTD)",
         value: "896",
       },

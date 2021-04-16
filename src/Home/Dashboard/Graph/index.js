@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import {
   LineGraph,
   Flex,
@@ -15,6 +15,7 @@ import {
   IconValue,
   IconCircle,
   CircleIconButton,
+  Body,
 } from "playbook-ui";
 
 const data = [
@@ -32,14 +33,58 @@ const keyPerformance = [
   { tab: "Repeat Sales" },
 ];
 
-const LineGraphLegend = ({ useWindowSize }) => {
-  const [width, height] = useWindowSize();
-  // const [newHeight, setNewHeight] = useState(320);
+const LineGraphLegend = ({ width, height }) => {
+  // const [results, setResults] = useState([]);
   // useState(() => {
   //   let string = height.toString() + "px";
   //   console.log(height, "ihihih");
   //   setNewHeight(string);
   // }, [newHeight, height]);
+  // function updateDataTitle() {
+  //   for (let i = 0; i < keyPerformance.length; i++) {
+  //     let b = document.getElementById(keyPerformance[i].tab);
+
+  //     if (b) {
+  //       console.log("", keyPerformance[i].tab, b.getAttribute("data-title"));
+
+  //       b.setAttribute("data-title", "meow");
+  //       console.log("after", b.getAttribute("data-title"));
+  //     }
+  //   }
+  // }
+  // useEffect(() => {
+  //   window.addEventListener("resize", updateDataTitle);
+  //   updateDataTitle();
+  //   return () => window.removeEventListener("resize", updateDataTitle);
+  // }, [width]);
+
+  var rows = [];
+  for (var i = 0; i < keyPerformance.length; i++) {
+    rows.push(
+      <Card highlight={i == 0 && { position: "side", color: "windows" }}>
+        <Flex orientation="row" justify="between">
+          <Flex orientation="row" style={{ width: "100%" }}>
+            {keyPerformance[i].tab}
+          </Flex>
+          <div
+            className="data-status"
+            data-status={keyPerformance[i].change > 0 ? "true" : "false"}
+          >
+            {keyPerformance[i].change > 0 ? (
+              <i className="fas fa-arrow-up"></i>
+            ) : keyPerformance[i].change < 0 ? (
+              <i className="fas fa-arrow-down"></i>
+            ) : (
+              ""
+            )}
+
+            {keyPerformance[i].change &&
+              Math.abs(keyPerformance[i].change) + "%"}
+          </div>
+        </Flex>
+      </Card>
+    );
+  }
   return (
     <div className="first-component">
       <Flex orientation="column" marginTop="lg" marginBottom="sm">
@@ -59,55 +104,65 @@ const LineGraphLegend = ({ useWindowSize }) => {
         </Flex>
       </Card>
 
-      <Flex orientation="row" className="second-row">
-        <div className="performance-tab">
-          <Table size="md">
-            <tbody>
-              {keyPerformance.map((item, i) => (
-                <TableRow
-                  key={i}
-                  sideHighlightColor={
-                    item.tab !== "Revenue" ? "none" : "category_1"
-                  }
-                  className="row-height"
-                >
-                  <td className="padding-tab">
-                    <Flex orientation="horizontal" spacing="between">
-                      <div
-                        className={
-                          "data-a " + (width < 1135 ? "desktop-2" : "")
-                        }
-                      >
-                        {item.tab}
-                      </div>
-                      <div
-                        className="data-status"
-                        data-status={item.change > 0 ? "true" : "false"}
-                      >
-                        {item.change > 0 ? (
-                          <i class="fas fa-arrow-up"></i>
-                        ) : item.change < 0 ? (
-                          <i class="fas fa-arrow-down"></i>
-                        ) : (
-                          ""
-                        )}
+      <Flex
+        orientation={width >= 946 ? "row" : "column"}
+        className="second-row"
+      >
+        <div className={"performance-tab " + (width <= 946 && "small-tab")}>
+          {width <= 946 ? (
+            <Body marginTop={width <= 946 && "sm"}>{rows}</Body>
+          ) : (
+            <Table size="md">
+              <tbody>
+                {keyPerformance.map((item, i) => (
+                  <TableRow
+                    key={i}
+                    sideHighlightColor={
+                      item.tab !== "Revenue" ? "none" : "category_1"
+                    }
+                    className="row-height"
+                  >
+                    <td className="padding-tab" id={item.tab}>
+                      <Flex orientation="horizontal" spacing="between">
+                        <div
+                          className={
+                            "data-a " + (width < 1135 ? "desktop-2" : "")
+                          }
+                        >
+                          {item.tab}
+                        </div>
+                        <div
+                          className="data-status"
+                          data-status={item.change > 0 ? "true" : "false"}
+                        >
+                          {item.change > 0 ? (
+                            <i className="fas fa-arrow-up"></i>
+                          ) : item.change < 0 ? (
+                            <i className="fas fa-arrow-down"></i>
+                          ) : (
+                            ""
+                          )}
 
-                        {item.change && Math.abs(item.change) + "%"}
-                      </div>
-                    </Flex>
-                  </td>
-                </TableRow>
-              ))}
-            </tbody>
-          </Table>
+                          {item.change && Math.abs(item.change) + "%"}
+                        </div>
+                      </Flex>
+                    </td>
+                  </TableRow>
+                ))}
+              </tbody>
+            </Table>
+          )}
         </div>
 
         <Background
+          marginTop={width <= 946 && "sm"}
           borderRadius="none"
           backgroundColor="white"
           paddingY="xs"
           // paddingTop="sm"
-          className="graph-container border-meow-meow"
+          className={
+            "graph-container border-meow-meow " + (width <= 946 && "small-tab")
+          }
         >
           <LineGraph
             paddingTop="md"

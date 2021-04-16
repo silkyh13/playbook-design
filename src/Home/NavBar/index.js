@@ -68,7 +68,7 @@ const HeadNav = (props) => {
             />
           </div>
 
-          <i class="fas fa-chevron-down"></i>
+          <i className="fas fa-chevron-down"></i>
         </Flex>
       </Background>
       <SectionSeparator />

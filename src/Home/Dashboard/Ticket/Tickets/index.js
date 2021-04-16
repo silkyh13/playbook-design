@@ -24,7 +24,6 @@ function getRandomInt(min, max) {
 }
 const Tickets = ({ item, width, i }) => {
   const [randomSize, setRandomSize] = useState([]);
-  const [headerAttribute, setHeaderAttribute] = useState("");
   let issue = [
     "Missing Part",
     "Not Performing",
@@ -75,21 +74,11 @@ const Tickets = ({ item, width, i }) => {
     for (let i = 0; i < randomSize.length + 1; i++) {
       let b = document.getElementById(`${item.title} ${i}`);
       if (b) b.setAttribute("data-title", "");
-      b.setAttribute("title", "aeioraoiejf");
     }
   }
-  // useEffect(() => {
-  //   window.addEventListener("resize", updateDataTitle);
-  // }, [headerAttribute]);
 
   useEffect(() => {
-    // if (randomSize.length) {
     updateDataTitle();
-    // window.addEventListener("resize", updateDataTitle);
-
-    // console.log(item.title, "size was change", randomSize, i);
-    // setHeaderAttribute(!headerAttribute);
-    // }
   }, [width]);
   return (
     <FlexItem

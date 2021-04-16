@@ -76,12 +76,13 @@
     }
   }
 }
+
 .stat-container {
-  height: 275px;
-  width: 275px;
+  height: 220px;
+  width: 220px;
   .stat-cards {
     align-self: center !important;
-    flex-basis: 225px !important;
+    flex-basis: 171px !important;
     display: flex !important;
     text-align: left;
     .icon-stat-value i {
@@ -91,7 +92,10 @@
     }
     .pb_caption_kit_md {
       color: #c1cdd6;
-      text-transform: none;
+      font-size: 10px;
+      letter-spacing: 0.02em;
+      font-weight: 530;
+      //   text-transform: none;
     }
   }
 }
@@ -118,12 +122,14 @@
     font-weight: 700 !important;
   }
 }
-
-.pipeline {
-  width: 30vw;
-  min-width: 320px;
-  .title-container {
-    height: 80px;
+.graph-and-stat {
+  width: 100%;
+  .pipeline {
+    width: 100%;
+    // min-width: 320px;
+    .title-container {
+      height: 80px;
+    }
   }
 }
 
@@ -147,19 +153,25 @@
     .performance-tab {
       width: 20%;
       margin: 0 -2px 0 0;
-      .row-height {
-        height: 7vh !important;
-        .padding-tab {
-          padding-right: 1vw !important;
-          padding-left: 1vw !important;
+    }
+    .small-tab {
+      width: 100% !important;
+    }
+    .row-height {
+      height: 7vh !important;
+      .padding-tab {
+        padding-right: 1vw !important;
+        padding-left: 1vw !important;
 
-          .data-a {
-            float: left !important;
-          }
-          .desktop-2 {
-            width: 20% !important;
-          }
+        .data-a {
+          float: left !important;
         }
+        .desktop-2 {
+          width: 20% !important;
+        }
+      }
+      .padding-tab[data-title]:hover:after {
+        background: blue;
       }
     }
   }
