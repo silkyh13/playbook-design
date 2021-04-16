@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Flex,
   Icon,
+  Card,
   Layout,
   Caption,
   Title,
@@ -24,6 +25,7 @@ function getRandomInt(min, max) {
 }
 const Tickets = ({ item, width, i }) => {
   const [randomSize, setRandomSize] = useState([]);
+  const [show, setShow] = useState(1);
   let issue = [
     "Missing Part",
     "Not Performing",
@@ -62,7 +64,7 @@ const Tickets = ({ item, width, i }) => {
   ];
   useEffect(() => {
     let meow = [];
-    for (let i = 0; i < getRandomInt(1, 5); i++) {
+    for (let i = 0; i < getRandomInt(1, 15); i++) {
       meow.push({
         user: user[getRandomInt(1, user.length)],
         issue: issue[getRandomInt(1, issue.length)],
@@ -87,66 +89,125 @@ const Tickets = ({ item, width, i }) => {
       flex={1}
       className={width > 1300 ? "" : "ticket-flex-main-container"}
     >
-      <Table className="ticket-table">
-        <tbody className="ticket-main-body">
-          <TableRow
-            sideHighlightColor={item.color}
-            className="header-container"
-          >
-            <td
-              className={width < 574 ? "hi" : "header-container-a"}
-              id={`${item.title} 0`}
+      {width > 574 ? (
+        <Table className="ticket-table">
+          <tbody className="ticket-main-body">
+            <TableRow
+              sideHighlightColor={item.color}
+              className="header-container"
             >
-              <div
-                className={"header-container-b " + (width > 1300 ? "a" : "b")}
-              >
-                <div className="header-container-c">
-                  <Flex>
-                    <Caption text={item.title} className="header-caption" />
-                  </Flex>
+              <td className="header-container-a" id={`${item.title} 0`}>
+                <div
+                  className={"header-container-b " + (width > 1300 ? "a" : "b")}
+                >
+                  <div className="header-container-c">
+                    <Flex>
+                      <Caption text={item.title} className="header-caption" />
+                    </Flex>
 
-                  <Pill
-                    text={item.number}
-                    variant={item.color}
-                    className="header-pill"
-                  />
+                    <Pill
+                      text={item.number}
+                      variant={item.color}
+                      className="header-pill"
+                    />
+                  </div>
                 </div>
-              </div>
-            </td>
-          </TableRow>
+              </td>
+            </TableRow>
+            {randomSize &&
+              randomSize.map((elem, index) => {
+                let who = elem.user;
+
+                return (
+                  <tr
+                    key={index}
+                    className={
+                      "ticket-row " + (index > show * 3 && "disappear")
+                    }
+                  >
+                    <td
+                      className="ticket-data"
+                      id={`${item.title} ${index + 1}`}
+                    >
+                      <Flex
+                        orientation="row"
+                        justify="around"
+                        className="ticket-flex"
+                      >
+                        <FlexItem>
+                          <Avatar
+                            imageAlt="Terry Johnson Standing"
+                            imageUrl={who.imageUrl}
+                            name={who.name}
+                            size="xs"
+                          />
+                        </FlexItem>
+                        <div className="center-content">
+                          <div className="elipsis">{elem.issue}</div>
+                        </div>
+                        <FlexItem>
+                          <i className="fas fa-chevron-right"></i>
+                        </FlexItem>
+                      </Flex>
+                    </td>
+                  </tr>
+                );
+              })}
+
+            <tr className="ticket-row">
+              <td className="ticket-data button-row">
+                <Flex
+                  orientation="row"
+                  justify="around"
+                  className="ticket-flex"
+                >
+                  <Button
+                    onClick={() => setShow(show + 1)}
+                    text="Show More"
+                    variant="link"
+                  />
+                </Flex>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
+      ) : (
+        <div>
+          <Card highlight={{ position: "side", color: item.color }}>
+            {item.title}
+          </Card>
+
           {randomSize &&
             randomSize.map((elem, index) => {
               let who = elem.user;
 
               return (
-                <tr key={index} className="ticket-row">
-                  <td className="ticket-data" id={`${item.title} ${index + 1}`}>
-                    <Flex
-                      orientation="row"
-                      justify="around"
-                      className="ticket-flex"
-                    >
-                      <FlexItem>
-                        <Avatar
-                          imageAlt="Terry Johnson Standing"
-                          imageUrl={who.imageUrl}
-                          name={who.name}
-                          size="xs"
-                        />
-                      </FlexItem>
-                      <div className="center-content">
-                        <div className="elipsis">{elem.issue}</div>
-                      </div>
-                      <FlexItem>
-                        <i class="fas fa-chevron-right"></i>
-                      </FlexItem>
-                    </Flex>
-                  </td>
-                </tr>
+                <Card key={index}>
+                  <Flex
+                    orientation="row"
+                    justify="between"
+                    // className="ticket-flex"
+                  >
+                    <FlexItem>
+                      <Avatar
+                        imageAlt="Terry Johnson Standing"
+                        imageUrl={who.imageUrl}
+                        name={who.name}
+                        size="xs"
+                      />
+                    </FlexItem>
+                    <div className="center-content">
+                      <div className="elipsis light">{elem.issue}</div>
+                    </div>
+                    <FlexItem>
+                      <i className="fas fa-chevron-right"></i>
+                    </FlexItem>
+                  </Flex>
+                </Card>
               );
             })}
-        </tbody>
-      </Table>
+        </div>
+      )}
     </FlexItem>
   );
 };

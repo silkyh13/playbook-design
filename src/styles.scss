@@ -47,6 +47,9 @@
             }
           }
         }
+        .button-row {
+          padding: 2px !important;
+        }
         .ticket-row {
           width: 100% !important;
           .ticket-data {
@@ -209,4 +212,7 @@
   border-right-color: rgb(228, 232, 240);
   border-bottom-color: rgb(228, 232, 240);
   border-left-color: rgb(228, 232, 240);
+}
+.disappear {
+  display: none;
 }
